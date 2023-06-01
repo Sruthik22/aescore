@@ -7,7 +7,7 @@ import qcelemental as qcel
 import torch
 from openbabel import pybel
 
-from ael import loaders
+from aescore.ael import loaders
 
 
 @pytest.mark.parametrize("ext", ["pdb", "mol2"])

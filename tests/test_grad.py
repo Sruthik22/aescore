@@ -3,7 +3,7 @@ import numpy as np
 import torch
 import torchani
 
-from ael import grad, loaders, models
+from aescore.ael import grad, loaders, models
 
 np.random.seed(42)
 torch.manual_seed(42)

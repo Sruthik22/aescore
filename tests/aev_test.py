@@ -2,7 +2,7 @@ import numpy as np
 import torch
 import torchani
 
-from ael import loaders
+from aescore.ael import loaders
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 

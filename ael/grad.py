@@ -99,7 +99,7 @@ if __name__ == "__main__":
     import numpy as np
     import tqdm
 
-    from ael import loaders, utils
+    from aescore.ael import loaders, utils
 
     parser = ap.ArgumentParser(description="Loss gradient.")
 

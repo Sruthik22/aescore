@@ -5,7 +5,7 @@ import numpy as np
 import torch
 import torchani
 
-from ael import loaders, models, predict, utils
+from aescore.ael import loaders, models, predict, utils
 
 np.random.seed(42)
 torch.manual_seed(42)

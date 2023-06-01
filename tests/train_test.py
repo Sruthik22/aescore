@@ -7,7 +7,7 @@ import torch
 import torchani
 from torch import nn, optim
 
-from ael import loaders, models, train
+from aescore.ael import loaders, models, train
 
 np.random.seed(42)
 torch.manual_seed(42)

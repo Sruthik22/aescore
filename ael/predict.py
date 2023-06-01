@@ -6,7 +6,7 @@ import numpy as np
 import pandas as pd
 import torch
 
-from ael import plot
+from aescore.ael import plot
 
 
 def predict(model, AEVC, loader, scaler=None, baseline=None, device=None):
@@ -194,7 +194,7 @@ if __name__ == "__main__":
 
     from torch.utils import data
 
-    from ael import argparsers, loaders, utils
+    from aescore.ael import argparsers, loaders, utils
 
     args = argparsers.predictparser()
 

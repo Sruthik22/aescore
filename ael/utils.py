@@ -8,7 +8,7 @@ import torchani
 from sklearn.preprocessing import StandardScaler
 from torch import nn
 
-from ael import constants, models
+from aescore.ael import constants, models
 
 
 def savemodel(model: nn.ModuleDict, path) -> None:

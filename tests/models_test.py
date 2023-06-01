@@ -4,7 +4,7 @@ import torch
 import torchani
 from torch import nn
 
-from ael import loaders, models
+from aescore.ael import loaders, models
 
 torch.manual_seed(42)
 

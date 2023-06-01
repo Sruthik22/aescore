@@ -6,7 +6,7 @@ import numpy as np
 import torch
 import tqdm
 
-from ael import utils
+from aescore.ael import utils
 
 
 def train(
@@ -187,7 +187,7 @@ if __name__ == "__main__":
     from torch.backends import cudnn
     from torch.utils import data
 
-    from ael import argparsers, loaders, models, plot, predict
+    from aescore.ael import argparsers, loaders, models, plot, predict
 
     args = argparsers.trainparser(default="BP")
 
