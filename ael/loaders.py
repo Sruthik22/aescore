@@ -604,39 +604,48 @@ class PDBData(Data):
         self.cmap = cmap
 
         with open(fname, "r") as f:
+
+            n = 0
+
             for line in tqdm.tqdm(f, desc=desc):
-                label, recfile, ligfile = line.split()
+                try:
+                    label, recfile, ligfile = line.split()
 
-                self.ids.append(os.path.dirname(recfile))
+                    self.ids.append(os.path.dirname(recfile))
 
-                self.labels.append(float(label))
+                    self.labels.append(float(label))
 
-                systems = load_mols_and_select(
-                    ligfile,
-                    recfile,
-                    distance,
-                    datapaths,
-                    removeHs=removeHs,
-                    ligmask=ligmask,
-                )
+                    systems = load_mols_and_select(
+                        ligfile,
+                        recfile,
+                        distance,
+                        datapaths,
+                        removeHs=removeHs,
+                        ligmask=ligmask,
+                    )
 
-                assert len(systems) == 1
-                if ligmask:
-                    els, coords, mask = systems[0]
+                    assert len(systems) == 1
+                    if ligmask:
+                        els, coords, mask = systems[0]
 
-                    # Store ligand mask
-                    self.ligmasks.append(torch.from_numpy(mask))
-                else:
-                    els, coords = systems[0]
+                        # Store ligand mask
+                        self.ligmasks.append(torch.from_numpy(mask))
+                    else:
+                        els, coords = systems[0]
 
-                atomicnums = elements_to_atomicnums(els)
+                    atomicnums = elements_to_atomicnums(els)
 
-                # Species are converted to tensors in atomicnums_to_idx
-                # Species are transformed to 0-based indices in atomicnums_to_idx
-                self.species.append(atomicnums)
+                    # Species are converted to tensors in atomicnums_to_idx
+                    # Species are transformed to 0-based indices in atomicnums_to_idx
+                    self.species.append(atomicnums)
 
-                # Coordinates are transformed to tensor here and left unchanged
-                self.coordinates.append(torch.from_numpy(coords))
+                    # Coordinates are transformed to tensor here and left unchanged
+                    self.coordinates.append(torch.from_numpy(coords))
+                except mda.exceptions.NoDataError:
+                    n += 1
+
+        print("NUMBER OF STRUCTURES THAT DON'T HAVE THE LAST COLUMN WITH ATOM INFORMATION")
+        print(n)
 
         self.labels = np.array(self.labels, dtype=np.float32)
         self.n = len(self.labels)
