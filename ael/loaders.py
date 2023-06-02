@@ -642,6 +642,7 @@ class PDBData(Data):
                     # Coordinates are transformed to tensor here and left unchanged
                     self.coordinates.append(torch.from_numpy(coords))
                 except:
+                    print(line)
                     n += 1
 
         print("NUMBER OF STRUCTURES THAT DON'T HAVE THE LAST COLUMN WITH ATOM INFORMATION")
