@@ -644,6 +644,7 @@ class PDBData(Data):
                 except:
                     print(line)
                     n += 1
+                    quit()
 
         print("NUMBER OF STRUCTURES THAT DON'T HAVE THE LAST COLUMN WITH ATOM INFORMATION")
         print(n)
