@@ -607,6 +607,8 @@ class PDBData(Data):
             for line in tqdm.tqdm(f, desc=desc):
                 label, recfile, ligfile = line.split()
 
+                print(line)
+
                 self.ids.append(os.path.dirname(recfile))
 
                 self.labels.append(float(label))
